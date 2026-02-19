@@ -1,0 +1,62 @@
+// Variables de couleurs Jupython
+$jupython-orange: #ff9f1c;
+$jupython-green: #2ec4b6; // Vert turquoise pour compléter l'orange
+$jupython-dark: #212529;
+$jupython-bg: #111827;
+
+:host {
+  display: block;
+  background-color: $jupython-bg;
+  color: #f8f9fa;
+  min-height: 100vh;
+}
+
+// Classes utilitaires
+.text-jupython-orange {
+  color: $jupython-orange !important;
+}
+
+.text-jupython-green {
+  color: $jupython-green !important;
+}
+
+.bg-jupython-dark {
+  background-color: $jupython-dark !important;
+}
+
+.text-muted {
+  color: #9ca3af !important;
+}
+
+// Cartes
+.card {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $jupython-orange !important;
+  }
+}
+
+// Avatar pour l'équipe
+.avatar-lg {
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  font-weight: bold;
+  color: white; // On passe en blanc pour le contraste sur le fond sombre
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, $jupython-orange, $jupython-green); // Dégradé stylé
+  border-radius: 50%; // Cercle parfait
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $jupython-orange !important;
+  }
+}

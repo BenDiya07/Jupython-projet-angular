@@ -1,0 +1,94 @@
+// Couleurs Jupython
+$jupython-orange: #ff9f1c;
+$jupython-green: #2ec4b6;
+$jupython-dark: #212529;
+
+:host {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.ranking-card {
+  background-color: $jupython-dark;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: rgba($jupython-orange, 0.5);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  // Indicateur de rang
+  .rank-badge {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+
+    &.rank-1 {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #000;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    }
+    &.rank-2 {
+      background: linear-gradient(135deg, #E0E0E0, #A9A9A9);
+      color: #000;
+    }
+    &.rank-3 {
+      background: linear-gradient(135deg, #CD7F32, #8B4513);
+      color: #fff;
+    }
+  }
+
+  // Infos étudiant
+  .student-details {
+    flex-grow: 1;
+
+    h5 {
+      margin: 0;
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .university {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      i { color: $jupython-green; }
+    }
+  }
+
+  // Stats (Certificats)
+  .cert-count {
+    text-align: right;
+    
+    .count {
+      font-weight: 700;
+      color: $jupython-orange;
+      font-size: 1.2rem;
+    }
+    small {
+      color: #6c757d;
+    }
+  }
+}

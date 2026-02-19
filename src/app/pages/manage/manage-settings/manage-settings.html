@@ -1,0 +1,56 @@
+<div class="container py-4">
+  <div class="row g-4">
+    
+    <div class="col-lg-8">
+      <div class="card bg-jupython-dark border-secondary p-4 shadow-sm">
+        <h4 class="text-white fw-bold mb-4 border-bottom border-secondary pb-2">Configuration Système</h4>
+        
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="text-secondary small fw-bold">POINTS PAR CERTIFICAT</label>
+            <input type="number" [(ngModel)]="appSettings.pointsPerCertificate" class="form-control bg-black border-secondary text-orange fw-bold">
+          </div>
+          <div class="col-md-6">
+            <label class="text-secondary small fw-bold">TAILLE MAX FICHIER (MB)</label>
+            <input type="number" [(ngModel)]="appSettings.maxFileSizeMB" class="form-control bg-black border-secondary text-white">
+          </div>
+          <div class="col-12 mt-4">
+            <div class="form-check form-switch p-3 border border-secondary border-opacity-25 rounded bg-black bg-opacity-25 mb-3">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="appSettings.maintenanceMode" id="maintenanceSwitch">
+              <label class="form-check-label text-white ms-2" for="maintenanceSwitch">
+                <span [class.text-danger]="appSettings.maintenanceMode">Mode Maintenance Actif</span>
+              </label>
+              <div class="text-muted small mt-1">Si actif, seuls les admins peuvent accéder au site.</div>
+            </div>
+
+            <div class="form-check form-switch p-3 border border-secondary border-opacity-25 rounded bg-black bg-opacity-25">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="appSettings.registrationOpen" id="regSwitch">
+              <label class="form-check-label text-white ms-2" for="regSwitch">Inscriptions Ouvertes</label>
+            </div>
+          </div>
+        </div>
+
+        <button (click)="saveSettings()" class="btn btn-jupython-orange mt-4 px-5 fw-bold">
+          ENREGISTRER LES MODIFICATIONS
+        </button>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card bg-jupython-dark border-secondary p-4">
+        <h5 class="text-white mb-3">Actions de Maintenance</h5>
+        <button (click)="clearCache()" class="btn btn-outline-secondary w-100 mb-2">Vider le Cache</button>
+        <button class="btn btn-outline-danger w-100">Forcer Déconnexion Globale</button>
+        
+        <hr class="border-secondary my-4">
+        
+        <h6 class="text-secondary small mb-3">VERSION SYSTÈME</h6>
+        <div class="d-flex justify-content-between">
+            <span class="text-muted small">v2.1.0-stable</span>
+            <span class="badge bg-success small">Online</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

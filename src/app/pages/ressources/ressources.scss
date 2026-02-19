@@ -1,0 +1,29 @@
+.ressources-container {
+  background: #0d1117;
+}
+
+.text-orange {
+  color: #ff7a18;
+}
+
+.blog-card {
+  background: #161b22;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: #00ff99;
+  }
+
+  img {
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .card-title {
+    font-weight: bold;
+  }
+}

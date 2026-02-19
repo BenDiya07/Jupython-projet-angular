@@ -1,0 +1,56 @@
+<div class="container-fluid py-4 bg-black min-vh-100">
+  <div class="card bg-jupython-dark border-secondary p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3 class="text-white fw-bold">Gestion des Certificats</h3>
+      
+      <div class="btn-group border border-secondary p-1 rounded">
+        <button (click)="filterStatus = 'ALL'" [class.btn-jupython-orange]="filterStatus === 'ALL'" class="btn btn-sm text-white">Tous</button>
+        <button (click)="filterStatus = 'PENDING'" [class.btn-warning]="filterStatus === 'PENDING'" class="btn btn-sm text-white">En attente</button>
+        <button (click)="filterStatus = 'APPROVED'" [class.btn-success]="filterStatus === 'APPROVED'" class="btn btn-sm text-white">Validés</button>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-dark table-hover align-middle">
+        <thead>
+          <tr class="text-secondary small">
+            <th>ID</th>
+            <th>ÉTUDIANT</th>
+            <th>FORMATION</th>
+            <th>PLATEFORME</th>
+            <th>STATUT</th>
+            <th class="text-end">ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if (certificates$ | async; as certs) {
+            @for (cert of getFilteredCertificates(certs); track cert.id) {
+              <tr class="border-bottom border-secondary border-opacity-25">
+                <td class="text-muted">#{{ cert.id }}</td>
+                <td class="text-white fw-medium">Utilisateur {{ cert.userId }}</td>
+                <td>{{ cert.courseName }}</td>
+                <td><span class="badge bg-dark border border-secondary">{{ cert.platform }}</span></td>
+                <td>
+                  <span class="badge" [ngClass]="{
+                    'bg-warning text-dark': cert.status === 'PENDING',
+                    'bg-success': cert.status === 'APPROVED',
+                    'bg-danger': cert.status === 'REJECTED'
+                  }">{{ cert.status }}</span>
+                </td>
+                <td class="text-end">
+                  <div class="btn-group">
+                    <a [href]="cert.fileUrl" target="_blank" class="btn btn-sm btn-outline-info me-2">Voir</a>
+                    @if (cert.status === 'PENDING') {
+                      <button (click)="approve(cert.id)" class="btn btn-sm btn-success me-1">✓</button>
+                      <button (click)="reject(cert.id)" class="btn btn-sm btn-danger">✗</button>
+                    }
+                  </div>
+                </td>
+              </tr>
+            }
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

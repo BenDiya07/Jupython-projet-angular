@@ -1,0 +1,60 @@
+<div class="card bg-jupython-dark border-secondary p-4 shadow-lg h-100">
+  <div class="d-flex align-items-center mb-4">
+    <i class="bi bi-file-earmark-plus text-jupython-orange fs-3 me-2"></i>
+    <h4 class="text-white fw-bold mb-0">Nouvelle certification</h4>
+  </div>
+
+  @if (successMessage) {
+    <div class="alert alert-success bg-success-subtle text-success border-success mb-4 animate__animated animate__fadeIn">
+      <i class="bi bi-check-circle-fill me-2"></i> Certificat soumis avec succès !
+    </div>
+  }
+
+  <form (ngSubmit)="onSubmit()" #certForm="ngForm">
+    <div class="mb-3">
+      <label class="form-label text-secondary small fw-bold">NOM DE LA FORMATION *</label>
+      <input type="text" name="courseName" 
+             class="form-control bg-dark text-white border-secondary focus-orange"
+             [(ngModel)]="newCert.courseName" 
+             required 
+             placeholder="Ex: Cisco CCNP Enterprise">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label text-secondary small fw-bold">PLATEFORME DE DÉLIVRANCE *</label>
+      <input type="text" name="platform" 
+             class="form-control bg-dark text-white border-secondary focus-orange"
+             [(ngModel)]="newCert.platform" 
+             required 
+             placeholder="Ex: Cisco Academy, Coursera">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label text-secondary small fw-bold">DATE D'OBTENTION</label>
+      <input type="date" name="issueDate" 
+             class="form-control bg-dark text-white border-secondary focus-orange"
+             [(ngModel)]="newCert.issueDate">
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label text-secondary small fw-bold">FICHIER DU CERTIFICAT (PDF/IMAGE)</label>
+      <div class="input-group">
+        <input type="file" (change)="onFileSelected($event)" 
+               class="form-control bg-dark text-white border-secondary" 
+               id="inputGroupFile02">
+      </div>
+      <div class="form-text text-muted small">Format PDF ou JPG conseillé.</div>
+    </div>
+
+    <button type="submit" 
+            class="btn btn-jupython-orange w-100 py-2 fw-bold text-uppercase shadow-sm"
+            [disabled]="!certForm.valid || loading">
+      @if (loading) {
+        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+        Traitement...
+      } @else {
+        <i class="bi bi-cloud-arrow-up-fill me-2"></i> Soumettre pour validation
+      }
+    </button>
+  </form>
+</div>

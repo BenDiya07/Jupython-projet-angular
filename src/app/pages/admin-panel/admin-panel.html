@@ -1,0 +1,59 @@
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-white fw-bold mb-0">Panel de Modération</h2>
+    <span class="badge bg-warning text-dark px-3 py-2 fw-bold">ACTIONS REQUISES</span>
+  </div>
+
+  <div class="card bg-jupython-dark border-secondary overflow-hidden">
+    <div class="table-responsive">
+      <table class="table table-dark table-hover align-middle mb-0">
+        <thead class="bg-black text-secondary smaller fw-bold">
+          <tr>
+            <th class="ps-4">ÉTUDIANT</th>
+            <th>FORMATION</th>
+            <th>PLATEFORME</th>
+            <th>DATE D'ENVOI</th>
+            <th class="text-end pe-4">ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (cert of (pendingCertificates$ | async); track cert.id) {
+            <tr class="border-secondary border-opacity-25">
+              <td class="ps-4">
+                <div class="d-flex align-items-center">
+                  <div class="avatar-sm bg-secondary rounded-circle me-2 d-flex align-items-center justify-content-center">
+                    <i class="bi bi-person"></i>
+                  </div>
+                  <span class="text-white fw-medium">Utilisateur #{{cert.id}}</span> 
+                </div>
+              </td>
+              <td><span class="text-orange fw-bold">{{ cert.courseName }}</span></td>
+              <td><span class="badge border border-secondary text-secondary">{{ cert.platform }}</span></td>
+              <td class="text-muted small">{{ cert.issueDate | date:'dd/MM/yyyy' }}</td>
+              <td class="text-end pe-4">
+                <div class="btn-group">
+                  <a [href]="cert.fileUrl" target="_blank" class="btn btn-sm btn-outline-light me-2">
+                    <i class="bi bi-eye"></i>
+                  </a>
+                  <button (click)="onApprove(cert.id)" class="btn btn-sm btn-success me-2">
+                    <i class="bi bi-check-lg"></i> Valider
+                  </button>
+                  <button (click)="onReject(cert.id)" class="btn btn-sm btn-outline-danger">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="5" class="text-center py-5">
+                <i class="bi bi-cup-hot fs-1 text-secondary opacity-25"></i>
+                <p class="text-muted mt-3">Bravo ! Aucun certificat en attente de traitement.</p>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

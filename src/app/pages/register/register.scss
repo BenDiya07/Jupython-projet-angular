@@ -1,0 +1,102 @@
+// Variables Jupython
+$jupython-dark: #23272e;
+$jupython-green: #2ea44f;
+$jupython-orange: #cb7723;
+$jupython-bg: #111827;
+$jupython-red: #da3633; // For errors
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: $jupython-bg;
+  color: #f8f9fa;
+  padding: 2rem 0; // Un peu d'espace pour le scroll si nécessaire
+}
+
+.card {
+  width: 100%;
+  max-width: 500px; // Un peu plus large que le login
+  background-color: $jupython-dark;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, label, div {
+  color: #fff !important;
+}
+
+.text-muted {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+// Custom color classes
+.text-jupython-orange {
+  color: $jupython-orange !important;
+}
+
+.form-label {
+  color: #e5e7eb;
+  font-weight: 500;
+}
+
+.form-control, .form-select {
+  background-color: rgba(17, 24, 39, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff !important;
+  padding: 0.75rem;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  &:focus {
+    background-color: rgba(17, 24, 39, 0.8);
+    border-color: $jupython-orange;
+    box-shadow: 0 0 0 0.25rem rgba($jupython-orange, 0.25);
+    color: #fff !important;
+  }
+  
+  option {
+    background-color: $jupython-dark;
+  }
+}
+
+.btn-primary {
+  background-color: $jupython-orange; // Orange pour l'inscription
+  border-color: $jupython-orange;
+  font-weight: 600;
+  padding: 0.75rem;
+  color: #000; // Contraste sur l'orange
+
+  &:hover {
+    background-color: lighten($jupython-orange, 5%);
+    border-color: lighten($jupython-orange, 5%);
+  }
+}
+
+a {
+  color: $jupython-green;
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
+
+// Alert for error messages
+.alert-danger {
+  background-color: rgba($jupython-red, 0.15);
+  border: 1px solid rgba($jupython-red, 0.5);
+  color: #f8d7da;
+  border-radius: 0.25rem;
+}
+
+// Fix pour l'autofill des navigateurs
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px $jupython-dark inset !important;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+}

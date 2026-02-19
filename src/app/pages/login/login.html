@@ -1,0 +1,36 @@
+<div class="login-container d-flex align-items-center justify-content-center vh-100 bg-black">
+  <div class="card bg-jupython-dark border-secondary p-4 shadow-lg" style="width: 100%; max-width: 400px;">
+    
+    <div class="text-center mb-4">
+      <h2 class="text-white fw-bold">JUPYTHON<span class="text-jupython-orange">RDC</span></h2>
+      <p class="text-secondary small">Connectez-vous à votre espace</p>
+    </div>
+
+    @if (errorMessage) {
+      <div class="alert alert-danger small py-2">{{ errorMessage }}</div>
+    }
+
+    <form (ngSubmit)="onLogin()">
+      <div class="mb-3">
+        <label class="form-label text-secondary small">EMAIL</label>
+        <input type="email" [(ngModel)]="email" name="email" 
+               class="form-control bg-dark text-white border-secondary focus-orange" required>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label text-secondary small">MOT DE PASSE</label>
+        <input type="password" [(ngModel)]="password" name="password" 
+               class="form-control bg-dark text-white border-secondary focus-orange" required>
+      </div>
+
+      <button type="submit" class="btn btn-jupython-orange w-100 fw-bold py-2" [disabled]="isLoading">
+        @if (isLoading) {
+          <span class="spinner-border spinner-border-sm me-2"></span>
+        }
+        SE CONNECTER
+      </button>
+    </form>
+
+    
+  </div>
+</div>

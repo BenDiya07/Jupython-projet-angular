@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-jupython-dark fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center fw-bold" routerLink="/">
+      <span class="badge bg-warning text-dark me-2">J</span>
+      JUPYTHON <span class="text-jupython-green ms-1">RDC</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active text-jupython-orange"
+            [routerLinkActiveOptions]="{exact: true}">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/ranking" routerLinkActive="active text-jupython-orange">Classement</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/ressources" routerLinkActive="active text-jupython-orange">Ressources</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active text-jupython-orange">À propos</a>
+        </li>
+
+        <li class="nav-item mx-2 d-none d-lg-block text-secondary">|</li>
+
+        @if (user$ | async) {
+        <li class="nav-item">
+          <a class="nav-link fw-bold text-jupython-orange" routerLink="/dashboard">Mon Dashboard</a>
+        </li>
+        
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+          <button (click)="onLogout()" class="btn btn-outline-danger btn-sm">Déconnexion</button>
+        </li>
+        } @else {
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+          <a class="btn btn-outline-light btn-sm me-2" routerLink="/login">Connexion</a>
+        </li>
+        <li class="nav-item mt-2 mt-lg-0">
+          <a class="btn btn-jupython-green btn-sm" routerLink="/register">Rejoindre</a>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
+<div style="height: 70px;"></div>

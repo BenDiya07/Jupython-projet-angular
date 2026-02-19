@@ -1,0 +1,52 @@
+<div class="container py-4">
+  <div class="card bg-jupython-dark border-secondary p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3 class="text-white fw-bold mb-0">Annuaire des Étudiants</h3>
+      <span class="badge bg-secondary">{{ users.length }} inscrits</span>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-dark table-hover align-middle">
+        <thead>
+          <tr class="text-secondary small">
+            <th>NOM COMPLET</th>
+            <th>EMAIL</th>
+            <th>RÔLE</th>
+            <th style="width: 150px;">POINTS</th>
+            <th class="text-end">ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (user of users; track user.id) {
+            <tr class="border-bottom border-secondary border-opacity-10">
+              <td>
+                <div class="fw-bold text-white">{{ user.full_name }}</div>
+                <div class="small text-muted">ID: #{{ user.id }}</div>
+              </td>
+              <td class="text-secondary">{{ user.email }}</td>
+              <td>
+                <span class="badge" [ngClass]="user.role === 'Admin' ? 'bg-danger' : 'bg-jupython-dark border border-secondary'">
+                  {{ user.role }}
+                </span>
+              </td>
+              <td>
+                <input type="number" 
+                       [(ngModel)]="user.points" 
+                       (change)="updatePoints(user.id, user.points)"
+                       class="form-control form-control-sm bg-black border-secondary text-orange fw-bold text-center">
+              </td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-info me-2" title="Voir le profil">
+                  <i class="bi bi-eye"></i>
+                </button>
+                <button (click)="deleteUser(user.id)" class="btn btn-sm btn-outline-danger" [disabled]="user.role === 'Admin'">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

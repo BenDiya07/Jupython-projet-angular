@@ -1,0 +1,95 @@
+<div class="container py-5">
+  <h2 class="text-white fw-bold mb-4">Tableau de Bord Administrateur</h2>
+
+  <div class="row g-4 mb-5">
+    <div class="col-md-3">
+      <div class="card bg-jupython-dark border-secondary p-3 h-100">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-secondary small fw-bold">ÉTUDIANTS</h6>
+            <h2 class="text-white mb-0">{{ totalStudents }}</h2>
+          </div>
+          <i class="bi bi-people fs-1 text-primary"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card bg-jupython-dark border-secondary p-3 h-100 border-start border-4 border-warning">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-secondary small fw-bold">EN ATTENTE</h6>
+            <h2 class="text-warning mb-0">{{ stats.pending }}</h2>
+          </div>
+          <i class="bi bi-clock-history fs-1 text-warning"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card bg-jupython-dark border-secondary p-3 h-100 border-start border-4 border-success">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-secondary small fw-bold">VALIDÉS</h6>
+            <h2 class="text-success mb-0">{{ stats.approved }}</h2>
+          </div>
+          <i class="bi bi-patch-check fs-1 text-success"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card bg-jupython-dark border-secondary p-3 h-100">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-secondary small fw-bold">TOTAL DOCS</h6>
+            <h2 class="text-white mb-0">{{ stats.total }}</h2>
+          </div>
+          <i class="bi bi-file-earmark-text fs-1 text-secondary"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card bg-jupython-dark border-secondary p-4">
+        <h5 class="text-white mb-4">Formations les plus suivies</h5>
+        <div class="table-responsive">
+          <table class="table table-dark table-hover mb-0">
+            <thead>
+              <tr class="text-secondary smaller">
+                <th>NOM DE LA FORMATION</th>
+                <th class="text-center">CERTIFICATS SOUMIS</th>
+                <th>PROGRESSION</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (course of popularCourses; track course.name) {
+                <tr>
+                  <td class="text-white fw-bold">{{ course.name }}</td>
+                  <td class="text-center">{{ course.count }}</td>
+                  <td style="width: 200px;">
+                    <div class="progress bg-dark" style="height: 6px;">
+                      <div class="progress-bar bg-jupython-orange" [style.width.%]="course.count * 2"></div>
+                    </div>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card bg-jupython-orange text-white p-4 h-100 d-flex flex-column justify-content-center">
+        <h4>Besoin de valider ?</h4>
+        <p class="small opacity-75">Il y a actuellement {{ stats.pending }} certificats qui attendent votre approbation.</p>
+        <button routerLink="/admin/certificates" class="btn btn-light fw-bold mt-2">
+          ALLER À LA VALIDATION
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

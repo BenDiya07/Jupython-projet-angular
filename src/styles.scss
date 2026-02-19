@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+@use "sass:color";
+@use "bootstrap/scss/bootstrap";
+
+:root {
+    --jupython-bg: #0b0f14;             /* Noir profond */
+    --jupython-dark: #151a21;           /* Gris foncé */
+    --jupython-green: #00C653;          /* Vert */
+    --jupython-orange: #FF8F00;         /* Orange */
+    --jupython-text: #F5F7FA;          /* Blanc cassé */
+}
+
+/* On surcharge le body pour le mode sombre par défaut */
+body {
+  background-color: var(--jupython-bg);
+  color: var(--jupython-text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Classes utilitaires personnalisées */
+.text-jupython-green { color: var(--jupython-green) !important; }
+.text-jupython-orange { color: var(--jupython-orange) !important; }
+.bg-jupython-dark { background-color: var(--jupython-dark) !important; }
+
+/* Boutons personnalisés */
+.btn-jupython-green {
+  background-color: var(--jupython-green);
+  color: white;
+  border: none;
+  font-weight: bold;
+  &:hover { background-color: color.adjust($color: #00C853, $lightness: -10%); color: white; }
+}
+
+.btn-jupython-orange {
+  background-color: var(--jupython-orange);
+  color: white;
+  border: none;
+  font-weight: bold;
+  &:hover { background-color: color.adjust($color: #FF8F00, $lightness: -10%); color: white; }
+} 
+

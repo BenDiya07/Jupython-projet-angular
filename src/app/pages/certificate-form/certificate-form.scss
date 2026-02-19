@@ -1,0 +1,42 @@
+// Variables de couleurs Jupython pour la cohérence
+$jupython-orange: #ff9f1c; // Orange vif principal (cf. home.scss)
+$jupython-dark-form: #1a1d21; // Un fond sombre spécifique aux inputs
+$jupython-grey-disabled: #7f8c8d;
+
+// NOTE: Idéalement, ces variables devraient être dans un fichier partagé (ex: `_variables.scss`)
+// et importées ici pour éviter la duplication.
+
+.bg-jupython-dark {
+    background-color: $jupython-dark-form;
+}
+
+// Style pour les inputs quand ils ont le focus.
+// Cibler .form-control est plus spécifique et évite les surprises.
+.form-control.focus-orange:focus {
+    border-color: $jupython-orange !important; // !important est conservé pour surcharger Bootstrap
+    box-shadow: 0 0 0 0.25rem rgba($jupython-orange, 0.25);
+    background-color: $jupython-dark-form;
+    color: white;
+}
+
+// Bouton personnalisé, aligné avec le style global du site (cf. home.scss)
+.btn-jupython-orange {
+    background-color: $jupython-orange;
+    border-color: $jupython-orange;
+    color: #000; // Texte noir pour un meilleur contraste sur l'orange
+    font-weight: 600;
+    transition: all 0.3s ease;
+
+    &:hover:not(:disabled) {
+        background-color: lighten($jupython-orange, 8%);
+        border-color: lighten($jupython-orange, 8%);
+        transform: translateY(-2px);
+    }
+
+    &:disabled {
+        background-color: $jupython-grey-disabled;
+        border-color: $jupython-grey-disabled;
+        cursor: not-allowed;
+        opacity: 0.65; // Standard Bootstrap pour l'état désactivé
+    }
+}

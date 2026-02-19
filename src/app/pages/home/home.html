@@ -1,0 +1,79 @@
+<section class="d-flex align-items-center min-vh-75 text-center text-lg-start py-5">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-lg-6">
+        <span class="badge bg-secondary mb-3">🎓 Communauté Étudiante RDC</span>
+        <h1 class="display-4 fw-bolder mb-3">
+          Validez vos compétences, <br>
+          <span class="text-jupython-orange">Boostez votre carrière.</span>
+        </h1>
+        <p class="lead text-muted mb-4">
+          La première plateforme congolaise qui centralise vos certificats (Cisco, Google, Microsoft)
+          et crée un classement national des meilleurs talents IT.
+        </p>
+        <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+          <a routerLink="/ranking" class="btn btn-jupython-orange btn-lg shadow">
+            <i class="bi bi-trophy-fill me-2"></i> Voir le Classement
+          </a>
+          <a routerLink="/register" class="btn btn-outline-light btn-lg">
+            Créer mon profil
+          </a>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-4">
+            <h3 class="fw-bold text-white mb-0">150+</h3>
+            <small class="text-muted">Étudiants</small>
+          </div>
+          <div class="col-4">
+            <h3 class="fw-bold text-white mb-0">320+</h3>
+            <small class="text-muted">Certificats</small>
+          </div>
+          <div class="col-4">
+            <h3 class="fw-bold text-white mb-0">5</h3>
+            <small class="text-muted">Universités</small>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-lg-6 text-center mt-5 mt-lg-0">
+
+        <!-- Intégration du composant de classement -->
+        <app-ranking [limit]="3"></app-ranking>
+
+        <a routerLink="/ranking" class="btn btn-link mt-3">
+          <i class="bi bi-arrow-right-circle me-1"></i> Voir le classement complet
+        </a>
+
+      </div>
+
+      <section class="marquee-section border-y border-secondary">
+        <div class="marquee-container">
+          <div class="marquee-content">
+            <div class="logo-track">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg" alt="Cisco">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+                alt="Microsoft">
+              <img src="https://www.vectorlogo.zone/logos/udemy/udemy-ar21.svg" alt="Udemy">
+              <img src="https://www.vectorlogo.zone/logos/coursera/coursera-ar21.svg" alt="Coursera">
+              <div class="oc-logo">OpenClassrooms</div>
+            </div>
+            <div class="logo-track">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg" alt="Cisco">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+                alt="Microsoft">
+              <img src="https://www.vectorlogo.zone/logos/udemy/udemy-ar21.svg" alt="Udemy">
+              <img src="https://www.vectorlogo.zone/logos/coursera/coursera-ar21.svg" alt="Coursera">
+              <div class="oc-logo">OpenClassrooms</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</section>

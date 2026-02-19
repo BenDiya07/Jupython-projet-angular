@@ -1,0 +1,6 @@
+<div class="d-flex align-items-center">
+  <h2 class="text-white fw-bold mb-0">Bienvenue, {{ username }} 👋</h2>
+  <span class="badge ms-3" [ngClass]="role === 'Admin' ? 'bg-danger' : 'bg-primary'">
+    {{ role }}
+  </span>
+</div>

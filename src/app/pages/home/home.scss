@@ -1,0 +1,131 @@
+// Variables de couleurs Jupython
+$jupython-orange: #ff9f1c; // Orange vif
+$jupython-dark: #212529;   // Gris très sombre pour les cartes
+$jupython-bg: #111827;     // Fond de page (Bleu nuit profond)
+
+:host {
+  display: block;
+  background-color: $jupython-bg; // Essentiel pour voir le text-white
+  color: #f8f9fa;
+  min-height: 100vh;
+}
+
+// Classes utilitaires personnalisées (utilisées dans le HTML)
+.text-jupython-orange {
+  color: $jupython-orange !important;
+}
+
+.bg-jupython-dark {
+  background-color: $jupython-dark !important;
+}
+
+// Bouton personnalisé
+.btn-jupython-orange {
+  background-color: $jupython-orange;
+  border-color: $jupython-orange;
+  color: #000; // Texte noir pour le contraste sur l'orange
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: lighten($jupython-orange, 10%);
+    border-color: lighten($jupython-orange, 10%);
+    transform: translateY(-2px);
+  }
+}
+
+// Amélioration de la lisibilité du texte "muted" sur fond sombre
+.text-muted {
+  color: #9ca3af !important; // Gris plus clair que le défaut Bootstrap
+}
+
+// Animation des cartes au survol
+.card:hover {
+  border-color: $jupython-orange !important;
+}
+
+// On récupère tes variables si elles ne sont pas globales
+$jupython-dark: #212529;
+$jupython-orange: #ff9f1c;
+
+.marquee-section {
+  background-color: $jupython-bg; // Fond sombre pour s'intégrer au thème
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.5rem 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  ); // Effet de fondu sur les bords
+}
+
+.marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0;
+  align-items: center;
+  animation: scroll-left 15s linear infinite;
+
+  &:hover {
+    animation-play-state: paused; // Stoppe le mouvement quand on regarde un logo
+  }
+}
+
+.logo-track {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 3rem;
+  // min-width supprimé pour éviter le vide si les logos ne remplissent pas l'écran
+  padding-right: 3rem;
+
+  img {
+    height: 45px;
+    width: auto;
+    filter: grayscale(100%) brightness(1.2) opacity(0.6);
+    transition: all 0.3s ease;
+
+    &:hover {
+      filter: grayscale(0%) brightness(1);
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+
+  .oc-logo {
+    font-weight: 900;
+    font-style: italic;
+    color: #9ca3af;
+    font-size: 1.5rem;
+    filter: grayscale(100%);
+    opacity: 0.5;
+  }
+}
+
+// L'animation magique
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

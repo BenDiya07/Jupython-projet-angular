@@ -1,0 +1,95 @@
+@use "sass:color"; // Toujours placer les @use tout en haut du fichier
+
+// Variables locales
+$jupython-dark: #23272e;
+$jupython-green: #2ea44f;
+$jupython-orange: #cb7723;
+$jupython-bg: #111827;
+
+:host {
+  display: block;
+  background-color: $jupython-bg;
+  color: #f8f9fa;
+  min-height: 100vh;
+}
+
+// Styles globaux pour le dashboard et ses enfants
+::ng-deep {
+  h1, h2, h3, h4, h5, h6 {
+    color: #f8f9fa;
+  }
+  
+  p, span, small, td {
+    color: #e9ecef;
+  }
+
+  .bg-jupython-dark {
+    background-color: $jupython-dark !important;
+    color: #ffffff !important;
+  }
+
+  .text-jupython-green {
+    color: $jupython-green !important;
+  }
+
+  .text-jupython-orange {
+    color: $jupython-orange !important;
+  }
+
+  .btn-jupython-orange {
+    background-color: $jupython-orange;
+    border-color: $jupython-orange;
+    color: #000;
+    font-weight: 600;
+    transition: all 0.3s ease;
+
+    &:hover {
+      // Correction : Utilisation de color.adjust au lieu de lighten
+      background-color: color.adjust($jupython-orange, $lightness: 10%);
+      border-color: color.adjust($jupython-orange, $lightness: 10%);
+      transform: translateY(-2px);
+    }
+  }
+
+  .text-muted {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .card {
+    background-color: $jupython-dark;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+      border-color: $jupython-orange !important;
+    }
+  }
+
+  .table-dark {
+    --bs-table-bg: transparent;
+    color: #f8f9fa;
+    
+    th {
+      color: #ced4da;
+      font-weight: 600;
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+    td {
+      border-bottom-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  .progress {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .course-item {
+    transition: background-color 0.2s ease;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+}

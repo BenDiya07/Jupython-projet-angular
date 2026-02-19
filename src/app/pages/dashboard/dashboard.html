@@ -1,0 +1,97 @@
+<div class="container py-5">
+
+  <app-dashboard-header [username]="username" [rank]="rank" [points]="points" [role]="userRole">
+  </app-dashboard-header>
+
+  @if (userRole === 'Admin') {
+  <div class="row g-4 mb-4">
+    <div class="mt-4">
+      <app-admin-charts></app-admin-charts>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-jupython-dark border-warning p-4 h-100">
+        <h6 class="text-secondary small fw-bold">CERTIFICATS EN ATTENTE</h6>
+        <h2 class="text-warning fw-bold mb-0">12</h2>
+        <i class="bi bi-clock-history fs-1 opacity-25 position-absolute end-0 bottom-0 m-3"></i>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-jupython-dark border-success p-4 h-100">
+        <h6 class="text-secondary small fw-bold">ÉTUDIANTS ACTIFS</h6>
+        <h2 class="text-success fw-bold mb-0">154</h2>
+        <i class="bi bi-people fs-1 opacity-25 position-absolute end-0 bottom-0 m-3"></i>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-jupython-orange text-white p-4 h-100">
+        <h6 class="small fw-bold">ACTION REQUISE</h6>
+        <p class="mb-2">Nouvelles soumissions à vérifier</p>
+        <button routerLink="/admin" class="btn btn-sm btn-light fw-bold">Accéder au Panel</button>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex gap-2 mt-4">
+    <button routerLink="/admin/certificates" class="btn btn-jupython-orange fw-bold">
+      <i class="bi bi-file-earmark-check me-2"></i> Gérer les Certificats
+    </button>
+
+    <button routerLink="/admin/users" class="btn btn-outline-light fw-bold">
+      <i class="bi bi-people me-2"></i> Annuaire Étudiants
+    </button>
+    <button routerLink="/admin/content" class="btn btn-outline-light fw-bold">
+      <i class="bi bi-people me-2"></i> Gestion Contenu (CMS)
+    </button>
+    <button routerLink="/admin/leaderboard" class="btn btn-outline-light fw-bold">
+      <i class="bi bi-people me-2"></i> Modération Classement
+    </button>
+    <button routerLink="/admin/settings" class="btn btn-jupython-orange fw-bold">
+      <i class="bi bi-file-earmark-check me-2"></i> Maintenance
+    </button>
+  </div>
+
+  <div class="bg-jupython-dark p-4 rounded border border-secondary border-opacity-25">
+    <h4 class="text-white fw-bold mb-4">Dernières soumissions reçues</h4>
+    <p class="text-muted">Utilisez le panneau de modération pour traiter les dossiers.</p>
+  </div>
+  }
+
+  @else {
+  <app-dashboard-stats [stats]="stats"></app-dashboard-stats>
+
+  <div class="row g-4 mt-2">
+    <div class="col-lg-4">
+      <app-certificate-form></app-certificate-form>
+    </div>
+
+    <div class="col-lg-8">
+      @if (certificate$ | async; as certs) {
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="text-white fw-bold mb-0">Mes Certifications</h4>
+        <span class="badge bg-jupython-dark border border-secondary text-secondary">
+          {{ $any(certs).length }} Soumissions
+        </span>
+      </div>
+
+      <div class="row g-3">
+        @for (cert of certs; track cert.id) {
+        <div class="col-md-6">
+          <app-certificate-card [data]="cert" (delete)="onDeleteCertificate($event)"></app-certificate-card>
+        </div>
+        } @empty {
+        <div class="col-12 text-center py-5 border border-dashed rounded bg-jupython-dark">
+          <p class="text-muted">Aucun certificat soumis pour le moment.</p>
+        </div>
+        }
+      </div>
+      } @else {
+      <div class="text-center text-muted">Chargement des certificats...</div>
+      }
+    </div>
+  </div>
+
+  <app-ongoing-courses [courses]="courses" class="mt-5 d-block"></app-ongoing-courses>
+  <app-recommendations [recommendations]="recommendations" class="mt-4 d-block">
+  </app-recommendations>
+  }
+
+</div>

@@ -1,0 +1,21 @@
+<div class="container py-5">
+    <h2 class="text-jupython-orange mb-4 text-center fw-bold">
+        <i class="bi bi-trophy-fill me-2"></i>Tableau d'Excellence Jupython
+    </h2>
+
+    <div class="bg-jupython-dark p-4 rounded-3 shadow-lg border border-secondary">
+
+  <h5 class="text-muted mb-3 text-start">
+    🔥 Top {{ limit }} Actuel
+  </h5>
+
+  <!-- Cards -->
+  <app-ranking-card
+    *ngFor="let student of students; let i = index"
+    [student]="student"
+    [rank]="i + 1">
+  </app-ranking-card>
+
+</div>
+
+</div>
